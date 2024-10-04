@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Diego Digital Marketing Company</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+</head>
+<!---Pink #FE00AE----->
+<!---White #F3F2FA----->
+<!---Yellow #FFEE00----->
+<!---Dark Blue #02152C----->
+<!---Button Size: 330px by 55px----->
+<body>
+<nav aria-label="main navigation">
+
+</nav>
+<div class="hero">
+    <div class="hero-cta">
+        <h1>Interactiv.co<span class="pink">nnect</span></h1>
+        <p>We're a small and dedicated team that confronts big challenges with even bigger ideas. Oh & we're damn good at making drop dead gorgeous websites.</p>
+        </div>
+
+        <div id="play-button">
+        <img src="/Assets/images/playbutton.png">
+        </div>
+
+</div>
+
+<div class="impact-section">
+
+    <div class="impact-cta">
+        
+        <h2><span class="pink">Make an Impact</span><br> Cut through the noise<br> thrive in a changing world</h2>
+        <button class="default-button">Let's Build Your Project</button>
+    
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('scroll', function () {
+            const section = document.querySelector('.impact-section');
+            const h2 = section.querySelector('h2');
+
+            const sectionHeight = section.offsetHeight; // Height of the section
+            const sectionTop = section.offsetTop; // Position of the section from the top
+            const scrollPosition = window.scrollY + window.innerHeight; // Bottom of the viewport (scroll position + viewport height)
+
+            // Determine when the scroll reaches the end of the section
+            const sectionBottom = sectionTop + sectionHeight;
+            const scrollRatio = Math.max(0, Math.min(1, (scrollPosition - sectionTop) / (sectionBottom - sectionTop)));
+
+            // Debugging (optional)
+            console.log(`Scroll Ratio: ${scrollRatio}, Scroll Position: ${scrollPosition}, Section Bottom: ${sectionBottom}`);
+
+            // Transition background color and text color at the end of the section
+            if (scrollPosition >= sectionBottom) {
+                section.style.backgroundColor = '#02152C';
+                h2.style.color = '#F3F2FA';
+            } else {
+                const newColor = interpolateColor('#F3F2FA', '#02152C', scrollRatio);
+                section.style.backgroundColor = newColor;
+                h2.style.color = scrollRatio > 0.5 ? '#F3F2FA' : '#02152C';
+            }
+        });
+
+        // Function to interpolate between two hex colors
+        function interpolateColor(color1, color2, ratio) {
+            const hex = function (x) {
+                x = x.toString(16);
+                return (x.length === 1) ? '0' + x : x;
+            };
+
+            const r = Math.ceil(parseInt(color1.substring(1, 3), 16) * (1 - ratio) + parseInt(color2.substring(1, 3), 16) * ratio);
+            const g = Math.ceil(parseInt(color1.substring(3, 5), 16) * (1 - ratio) + parseInt(color2.substring(3, 5), 16) * ratio);
+            const b = Math.ceil(parseInt(color1.substring(5, 7), 16) * (1 - ratio) + parseInt(color2.substring(5, 7), 16) * ratio);
+
+            return `#${hex(r)}${hex(g)}${hex(b)}`;
+        }
+    });
+</script>
+
+<div class="our-approach">
+    <div class="things">
+        <h2><span class="pink">Three</span> Things We're <br><span class="three-things-span">Damn Good at</span></h2>
+    </div>
+    <div class="things-counter">
+    <div class="thing one">
+        <h2>01</h2>
+        <h3>Conveying Your Message</h3>
+        <p>Tell a profound story about your awesome brand</p>
+
+    </div>
+    <div class="thing two">
+        <h2>02</h2>
+        <h3>Conveying Your Message</h3>
+        <p>Tell a profound story about your awesome brand</p>
+
+    </div>
+    <div class="thing three">
+        <h2>03</h2>
+        <h3>Conveying Your Message</h3>
+        <p>Tell a profound story about your awesome brand</p>
+        
+    </div>
+    </div>
+
+</div>
+
+
+<div class="services-section">
+    <div class="ready-to-start">
+        <h2>Ready to start your <span class="pink">project?</span></h2>
+        <button class="default-button">Let's Build Your Project</button>
+    </div>
+
+
+    
+
+
+
+</div>
+
+
+</body>
+</html>
